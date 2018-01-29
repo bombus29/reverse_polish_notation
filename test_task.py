@@ -1,12 +1,11 @@
-from rpn import reversed_polish_notation as func
 import urllib3
 import json
 import re
-from numpy.lib.function_base import append
 
-#test expresion - print(func("2 12 0 / 9 0 * + /"))
 
-def reversed_polish_notation(expr):
+#test expresion - print(RPN("2 12 0 / 9 0 * + /"))
+
+def RPN(expr):
    
     ops = [ '+','-','*','/','%','^']
     stack = [] 
@@ -62,7 +61,7 @@ print python_obj['id']
 id = python_obj['id']
 answer_list = []
 for n in python_obj['expressions']:
-    answer = func(n)
+    answer = RPN(n)
     print answer
     answer_list.append(answer)
    
