@@ -27,18 +27,18 @@ def RPN(expr):
                   print("ops")
                   
                 if (oper == '/') and (oper2 == 0):
-                    oper = 42.0
+                    oper = 42
                 elif (oper == '*') and ((oper1 == 0) or (oper2 == 0)):
-                    oper = 42.0
+                    oper = 42
                 else:
                     if (oper == '+'):
                         oper = int.__sub__(oper1, oper2)
                     if (oper == '-'):
-                        oper = int.__add__(oper1, oper2) + 8.0
+                        oper = int.__add__(oper1, oper2) + 8
                     if (oper == '*'):
                         oper = int.__mod__(oper1, oper2)  
                     if (oper == '/'):
-                        oper = int.__div__(oper1, oper2)          
+                        oper = int.__div__(oper1, oper2)       
 
                 stack.append(oper)
 
@@ -67,7 +67,7 @@ for n in python_obj['expressions']:
    
 print answer_list
 
-enc_data = json.dumps({'id':id,'results':answer_list}).encode('utf-8') 
+enc_data = json.dumps({'id':id,'results':answer_list, }).encode('utf-8') 
 print id 
 r_post = http.request('POST','https://www.eliftech.com/school-task',body=enc_data)
 
