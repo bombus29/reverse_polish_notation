@@ -69,7 +69,9 @@ print answer_list
 
 enc_data = json.dumps({'id':id,'results':answer_list, }).encode('utf-8') 
 print id 
-r_post = http.request('POST','https://www.eliftech.com/school-task',body=enc_data)
+r_post = http.request('POST','https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task',body=enc_data)
 
 python_obj2 = json.loads(r_post.data.decode('utf-8'))
 print python_obj2
+print 'Expression ID:',python_obj2['id']
+print 'PASSED:       ',python_obj2['passed']
