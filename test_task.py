@@ -3,7 +3,8 @@ import json
 import re
 
 
-#test expresion - print(RPN("2 12 0 / 9 0 * + /"))
+# test expresion - print(RPN("2 12 0 / 9 0 * + /"))
+# RPN - reverse polish natation function
 
 def RPN(expr):
    
@@ -54,24 +55,24 @@ http = urllib3.PoolManager()
 r_get = http.request('GET', 'https://www.eliftech.com/school-task')
 
 python_obj = json.loads(r_get.data.decode('utf-8'))
-print python_obj
-print python_obj['expressions']
-print python_obj['id']
+print "GET response object:         ", python_obj
+print "GET response expressions:    ", python_obj['expressions']
+print "GET response expressions ID: ", python_obj['id']
 
 id = python_obj['id']
 answer_list = []
 for n in python_obj['expressions']:
     answer = RPN(n)
-    print answer
+    # print answer
     answer_list.append(answer)
    
-print answer_list
+print "POST request answer list:",answer_list
+print "POST request answer ID:  ",id
 
 enc_data = json.dumps({'id':id,'results':answer_list, }).encode('utf-8') 
-print id 
 r_post = http.request('POST','https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task',body=enc_data)
 
 python_obj2 = json.loads(r_post.data.decode('utf-8'))
-print python_obj2
-print 'Expression ID:',python_obj2['id']
-print 'PASSED:       ',python_obj2['passed']
+print 'POST response object:         ',python_obj2
+print 'POST response expression ID:  ',python_obj2['id']
+print 'POST response passed:         ',python_obj2['passed']
